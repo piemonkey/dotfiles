@@ -1,0 +1,5 @@
+# Gitignore for config repo stored in .dotfiles (using core.worktree "../../")
+
+# Ignore everything except self by default
+*
+!.gitignore
