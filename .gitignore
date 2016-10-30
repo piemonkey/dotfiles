@@ -3,3 +3,5 @@
 # Ignore everything except self by default
 *
 !.gitignore
+
+!.zshrc
