@@ -1,0 +1,7 @@
+[user]
+	email = piemonkey@gmail.com
+	name = Rich
+[core]
+	editor = vim
+[push]
+	default = simple
