@@ -13,8 +13,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# Liquidprompt for prompt info
-source /usr/bin/liquidprompt
+##### Conveniences and path
 
 # ssh-agent
 if ! pgrep -u $USER ssh-agent > /dev/null; then
@@ -24,6 +23,18 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
 	eval $(<~/.ssh-agent-props) > /dev/null
 fi
 
+# Ruby gems
+PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+
+##### Prompt and bindings
+
+# Manual zsh config
+bindkey '^R' history-incremental-pattern-search-backward
+
+# Liquidprompt for prompt info
+source /usr/bin/liquidprompt
+
+##### Aliases
 
 # Random aliases
 alias ls='ls --color=auto'
