@@ -43,4 +43,9 @@ alias ls='ls --color=auto'
 alias meteor='LC_ALL=en_GB.UTF-8 ~/.meteor/meteor'
 
 # Configuring external monitors
-alias dual-hd-right='xrandr --output eDP-1 --auto --output DP-1 --auto --panning 3168x1782+3200+0 --scale 1.65x1.65 --right-of eDP-1'
+alias dual-hd-right='xrandr --output eDP-1 --auto --output DP-1 --auto --panning 3200x1800+3200+0 --scale 1.66667x1.66667 --right-of eDP-1'
+
+# sshfs
+alias sshfs-media-home='sshfs -C mac-mini-home:media ~/mac'
+alias sshfs-media='sshfs -C mac-mini:media ~/mac'
+
