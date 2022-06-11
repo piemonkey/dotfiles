@@ -1,7 +1,11 @@
 [user]
-	email = piemonkey@gmail.com
+	email = piemonkey@protonmail.ch
 	name = Rich
 [core]
-	editor = vim
+	editor = nvim
 [push]
 	default = simple
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
