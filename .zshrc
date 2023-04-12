@@ -13,6 +13,10 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+##### Additional shell tweaks
+
+autoload zmv
+
 ##### Conveniences and path
 
 # ssh-agent
@@ -45,6 +49,7 @@ source /usr/bin/liquidprompt
 
 # Vim!
 EDITOR=/usr/bin/nvim
+SUDO_EDITOR=/usr/bin/vim
 
 ##### Aliases
 
