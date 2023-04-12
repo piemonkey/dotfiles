@@ -3,12 +3,9 @@
 # Ignore everything except self by default
 *
 !.gitignore
+# Allow recursing into subdirs but don't allow any specific files at this point
+!*/
 
-!.zshrc
-!.vimrc
-!.gitconfig
-!.tmux.conf
-
-# Allow config subdir to manage itself
-!.config
-!.config/**
+# Allow whole nvim dir like normal
+!nvim
+!nvim/**
