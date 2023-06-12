@@ -18,7 +18,9 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'tpope/vim-sleuth'
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
+" Mason for LSP and installing other external stuff
+Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
+Plug 'williamboman/mason-lspconfig.nvim'
 " Completion
 Plug 'ms-jpq/coq_nvim'
 " Tab bar for buffers
