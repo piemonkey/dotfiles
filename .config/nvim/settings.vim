@@ -10,6 +10,8 @@ set termguicolors
 colorscheme torte
 " Always leave space for marks, to avoid whole file moving when one appears
 set signcolumn=yes
+" Set default shiftwidth, to be overridden by vim-sleuth if it makes sense
+set shiftwidth=2
 
 " These are commonly overridden in filetype definitions, so always switch them
 
