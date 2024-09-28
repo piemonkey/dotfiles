@@ -5,7 +5,21 @@
 	editor = nvim
 [push]
 	default = simple
+	autoSetupRemote = true
 [pull]
 	ff = only
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[rerere]
+	enabled = true
+	autoUpdate = true
+[branch]
+	sort = -committerdate
+[alias]
+	fpush = push --force-with-lease
+	lg = log --graph
