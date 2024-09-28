@@ -19,6 +19,8 @@ autoload zmv
 
 ##### Conveniences and path
 
+source ~/.env
+
 # ssh-agent
 if ! pgrep -u $USER ssh-agent > /dev/null; then
     ssh-agent > ~/.ssh-agent-props
@@ -27,8 +29,14 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
 	eval $(<~/.ssh-agent-props) > /dev/null
 fi
 
+# Mise-en-place
+eval "$(mise activate zsh)"
+
+# zoxide
+eval "$(zoxide init zsh)"
+
 # Ruby gems
-PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+#PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 
 # Set up Node Version Manager
 source /usr/share/nvm/init-nvm.sh
@@ -62,6 +70,7 @@ alias meteor='LC_ALL=en_GB.UTF-8 meteor'
 
 # Configuring external monitors
 alias dual-hd-right='xrandr --output eDP-1 --auto --primary --output DP-1 --auto --right-of eDP-1'
+alias dual-hd-above='xrandr --output eDP-1 --auto --primary --output DP-1 --auto --above eDP-1'
 alias single-hd-external='xrandr --output eDP-1 --off --output DP-1 --auto --primary' 
 alias single-hd-internal='xrandr --output eDP-1 --auto --primary --output DP-1 --off'
 alias mirror-unscaled='xrandr --output eDP-1 --auto --output DP-1 --auto --same-as eDP-1'
