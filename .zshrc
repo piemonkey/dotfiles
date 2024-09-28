@@ -41,8 +41,9 @@ eval "$(zoxide init zsh)"
 # Set up Node Version Manager
 source /usr/share/nvm/init-nvm.sh
 
-# Yarn globals
-PATH=$PATH:~/.yarn/bin
+# Pnpm globals
+export PNPM_HOME=~/.local/share/pnpm
+PATH=$PATH:$PNPM_HOME
 
 # Android dev
 #ANDROID_HOME=/opt/android-sdk
