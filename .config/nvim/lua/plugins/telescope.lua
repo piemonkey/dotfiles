@@ -1,6 +1,5 @@
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
-local themes = require('telescope.themes')
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files)
 vim.keymap.set('n', '<leader>fw', builtin.grep_string)
@@ -8,15 +7,13 @@ vim.keymap.set('n', '<leader>fg', function() builtin.live_grep({ disable_coordin
 vim.keymap.set('n', '<leader>fq', builtin.quickfix)
 vim.keymap.set('n', '<leader>fb', builtin.buffers)
 vim.keymap.set('n', '<leader>fr', builtin.resume)
--- Stolen from Cid
-vim.keymap.set('n', '<leader>fn',
-    function() 
-        require("telescope.builtin").find_files({
-            prompt_title = "< nvim config >",
-            cwd = "$HOME/.config/nvim",
-       })
-    end
-)
+-- Helps with accidentally opened pickers?
+vim.keymap.set('n', '<leader>fR', builtin.pickers)
+vim.keymap.set('n', '<leader>fu', builtin.lsp_references)
+vim.keymap.set('n', '<leader>fe', builtin.diagnostics)
+-- Maybe useful for history browsing...
+vim.keymap.set('n', '<leader>fi', builtin.git_commits)
+vim.keymap.set('n', '<leader>fo', builtin.jumplist)
 -- Stolen from Cid
 -- function() 
 --     require("telescope.builtin").git_branches({
@@ -30,6 +27,11 @@ vim.keymap.set('n', '<leader>fn',
 
 require('telescope').setup {
     defaults = {
+        file_ignore_patterns = {
+            'package-lock.json',
+            'yarn.lock',
+            'pnpm-lock.yml',
+        },
         file_sorter = require('telescope.sorters').get_fzy_sorter,
         prompt_prefix = ' >',
         color_devicons = true,
@@ -51,10 +53,11 @@ require('telescope').setup {
             preview_width = 0.60,
         },
         wrap_results = true,
-        path_display = 'smart', --{
+        path_display = {
+            'smart',
             -- "truncate",
             -- shorten = { len = 3, exclude = {-2, -1} },
-        -- },
+        },
         preview = {
             -- Seems to time out on some big volunteers-nowhere files
             -- timeout = 400

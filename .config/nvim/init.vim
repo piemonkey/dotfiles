@@ -6,7 +6,7 @@ source ~/.config/nvim/settings.vim
 " Init plug and all plugins
 call plug#begin('~/.config/nvim/site/autoload/plugged')
 
-" Keybinding assist
+" Display key mappings
 Plug 'folke/which-key.nvim'
 " Syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -40,7 +40,15 @@ Plug 'AndrewRadev/splitjoin.vim'
 " icons
 Plug 'nvim-tree/nvim-web-devicons'
 " Add CVS info to sign column
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
+" Okay, just for git but seems better
+Plug 'lewis6991/gitsigns.nvim'
+" Repeat plugin actions with '.'
+Plug 'tpope/vim-repeat'
+" Autocomplete for html-ish tags (maybe superceded by autocomplete changes?)
+Plug 'windwp/nvim-ts-autotag'
+" Open related files like templates
+Plug 'rgroli/other.nvim'
 
 call plug#end()
 

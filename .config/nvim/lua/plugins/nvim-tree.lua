@@ -28,7 +28,7 @@ require('nvim-tree').setup({
   },
 })
 
-vim.api.nvim_set_keymap( "n", "<leader>fl", ":NvimTreeToggle<CR>", { noremap = true } )
+vim.api.nvim_set_keymap( "n", "<leader>l", ":NvimTreeToggle<CR>", { noremap = true } )
 
 -- 'niaive' auto close (close nvim-tree when vim should close) taken from github
 vim.api.nvim_create_autocmd("BufEnter", {
