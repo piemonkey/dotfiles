@@ -45,7 +45,20 @@ source /usr/share/nvm/init-nvm.sh
 PATH=$PATH:~/.yarn/bin
 
 # Android dev
-ANDROID_HOME=/opt/android-sdk
+#ANDROID_HOME=/opt/android-sdk
+
+# Docker Ember
+PATH=$PATH:~/coding/redpencil/docker-ember/bin
+
+# Docker rootless
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
+# Mu CLI (semtech CLI)
+PATH=$PATH:~/coding/redpencil/mu-cli/
+## Currently bash completions only used for mu-cli:
+autoload -U +X bashcompinit
+bashcompinit
+source ~/coding/redpencil/mu-cli/completions
 
 ##### Prompt and bindings
 
@@ -92,6 +105,40 @@ alias watchman-reset='watchman watch-del-all && watchman shutdown-server'
 alias adlink='adb shell am start -a android.intent.action.VIEW'
 alias ademu='/opt/android-sdk/emulator/emulator'
 
-# Docker perms
-alias docker='sudo docker'
-alias docker-compose='sudo docker-compose'
+# Docker conveniences
+comp() {
+	local DOCKER_FILES=(-f docker-compose.yml)
+	if [ -e "docker-compose.dev.yml" ]; then
+		local DOCKER_FILES=($DOCKER_FILES -f docker-compose.dev.yml)
+	fi
+	if [ -e "docker-compose.override.yml" ]; then
+		local DOCKER_FILES=($DOCKER_FILES -f docker-compose.override.yml)
+	fi
+	local COMMAND=$1
+	shift
+	if [[ "$COMMAND" == "up" ]]; then
+		if [[ "$1" == "-D" ]]; then
+			local COMMAND=(up)
+			1=""
+			shift
+		elif [[ "$1" != "-d" ]]; then
+			local COMMAND=(up -d)
+		fi
+	fi
+	if [[ "$COMMAND" == (up -d) ]] || [[ "$COMMAND" == "start" ]] || [[ "$COMMAND" == "restart" ]]; then
+		if [[ "$COMMAND" == (up -d) ]]; then
+			local ORPHANS="--remove-orphans"
+		fi
+		docker compose $DOCKER_FILES $COMMAND $ORPHANS "$@" && docker compose logs -fn 200
+	else
+		docker compose $DOCKER_FILES $COMMAND $@
+	fi
+}
+comp-up() {
+	docker compose up -d $@ && docker compose logs -fn 200
+}
+alias comp-dev='docker compose -f docker-compose.yml -f docker-compose.dev.yml'
+comp-dev-up() {
+	docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --remove-orphans $@ && docker compose logs -fn 200
+}
+alias dockly='docker run -it --rm -v /run/user/1000/docker.sock:/var/run/docker.sock lirantal/dockly'
