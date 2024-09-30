@@ -22,7 +22,13 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
 Plug 'williamboman/mason-lspconfig.nvim'
 " Completion
-Plug 'ms-jpq/coq_nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 " Tab bar for buffers
 Plug 'romgrk/barbar.nvim'
 " File browser
@@ -54,6 +60,5 @@ call plug#end()
 
 " load plugin configs
 lua require('plugins')
-source ~/.config/nvim/configs/coq.vim
 
 lua require('bindings.misc')
