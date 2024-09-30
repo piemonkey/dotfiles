@@ -1,6 +1,10 @@
 -- Set up mason first
 require("mason").setup()
 
+-- Set up cmp lsp plugin
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local default_config = { capabilities = capabilities }
+
 -- Then mason-lspconfig
 local servers = {
   -- "cssls",
@@ -17,15 +21,16 @@ local servers = {
       "typescriptreact",
       "json",
     },
+    capabilities = capabilities,
   },
-  bashls = {},
-  marksman = {},
-  pylsp = {},
-  lua_ls = {},
-  ts_ls = {},
-  ember = {},
-  glint = {},
-  elixirls = {},
+  bashls = default_config,
+  marksman = default_config,
+  pylsp = default_config,
+  lua_ls = default_config,
+  ts_ls = default_config,
+  ember = default_config,
+  glint = default_config,
+  elixirls = default_config,
 }
 
 local lspconfig = require('mason-lspconfig')
@@ -38,7 +43,7 @@ lspconfig.setup_handlers {
   -- and will be called for each installed server that doesn't have
   -- a dedicated handler.
   function (server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup(servers[server_name] or {})
+    require("lspconfig")[server_name].setup(servers[server_name] or default_config)
   end,
   -- Next, you can provide a dedicated handler for specific servers.
   -- For example, a handler override for the `rust_analyzer`:
