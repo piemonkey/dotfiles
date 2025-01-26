@@ -1,13 +1,8 @@
 require("other-nvim").setup({
   mappings = {
-    -- custom mapping
+    -- Ember components
     {
-      pattern = "/components/(.*)%.js$",
-      target = "/components/%1.hbs",
-      context = "component",
-    },
-    {
-      pattern = "/components/(.*)%.ts$",
+      pattern = "/components/(.*)%.[tj]s$",
       target = "/components/%1.hbs",
       context = "component",
     },
@@ -15,62 +10,35 @@ require("other-nvim").setup({
       pattern = "/components/(.*)%.hbs$",
       target = {
         {
-          target = "/components/%1\\(*.js\\|*.ts\\)",
+          target = "/components/%1.*",
           context = "component",
-
         },
 
       }
     },
-
+    -- Ember routes/controllers/templates
     {
-      pattern = "/controllers/(.*)%.js$",
+      pattern = "/controllers/(.*)%.[tj]s$",
       target = {
         {
           target = "/templates/%1.hbs",
           context = "template",
         },
         {
-          target = "/routes/%1\\(*.js\\|*.ts\\)",
+          target = "/routes/%1.*",
           context = "route",
         }
       },
     },
     {
-      pattern = "/controllers/(.*)%.ts$",
+      pattern = "/routes/(.*)%.[tj]s$",
       target = {
         {
           target = "/templates/%1.hbs",
           context = "template",
         },
         {
-          target = "/routes/%1\\(*.js\\|*.ts\\)",
-          context = "route",
-        }
-      },
-    },
-    {
-      pattern = "/routes/(.*)%.js$",
-      target = {
-        {
-          target = "/templates/%1.hbs",
-          context = "template",
-        },
-        {
-          target = "/controllers/%1\\(*.js\\|*.ts\\)",
-          context = "controller",
-        }
-      },
-    },
-    {
-      pattern = "/routes/(.*)%.ts$",
-      target = {
-        {
-          target = "/templates/%1.hbs",
-          context = "template",
-        },
-        {
-          target = "/controllers/%1\\(*.js\\|*.ts\\)",
+          target = "/controllers/%1.*",
           context = "controller",
         }
       },
@@ -79,11 +47,13 @@ require("other-nvim").setup({
       pattern = "/templates/(.*)%.hbs$",
       target = {
         {
-          target = "/routes/%1\\(*.js\\|*.ts\\)",
+          -- target = "/routes/%1.?s",
+          target = "/routes/%1.*",
           context = "route",
         },
         {
-          target = "/controllers/%1\\(*.js\\|*.ts\\)",
+          -- target = "/controllers/%1.?s",
+          target = "/controllers/%1.*",
           context = "controller",
         }
       },

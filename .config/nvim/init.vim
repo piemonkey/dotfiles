@@ -35,6 +35,7 @@ Plug 'romgrk/barbar.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 " Text object commenting
 Plug 'tpope/vim-commentary'
+" Plug 'tomtom/tcomment_vim'
 " Markdown previewing
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " Editing 'surrounds' eg quotes together
@@ -52,9 +53,13 @@ Plug 'lewis6991/gitsigns.nvim'
 " Repeat plugin actions with '.'
 Plug 'tpope/vim-repeat'
 " Autocomplete for html-ish tags (maybe superceded by autocomplete changes?)
-Plug 'windwp/nvim-ts-autotag'
+" Plug 'windwp/nvim-ts-autotag'
+Plug 'buschco/nvim-cmp-ts-tag-close'
 " Open related files like templates
 Plug 'rgroli/other.nvim'
+" Format TS errors nicely
+Plug 'MunifTanjim/nui.nvim'
+Plug 'OlegGulevskyy/better-ts-errors.nvim'
 
 call plug#end()
 

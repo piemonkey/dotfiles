@@ -20,6 +20,7 @@ require'nvim-treesitter.configs'.setup {
     "markdown",
     "python",
     "regex",
+    "sparql",
     "toml",
     "tsx",
     "typescript",

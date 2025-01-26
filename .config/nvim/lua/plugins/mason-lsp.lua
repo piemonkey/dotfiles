@@ -31,6 +31,7 @@ local servers = {
   ember = default_config,
   glint = default_config,
   elixirls = default_config,
+  yamlls = default_config,
 }
 
 local lspconfig = require('mason-lspconfig')
